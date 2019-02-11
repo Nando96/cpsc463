@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="CPSC463/css/style.css" />
+        <title>Online Food Ordering System</title>
+    </head>
+    <body>
+        <h1>Welcome to Online Food Ordering</h1>
+        <form action="CPSC463/scripts/getIndexInfo.php" method="POST">
+            <fieldset>
+                <h2>Login</h2>
+                <label for="email"><b>Email</b><br/> </label>
+                <input type="text" name="email" size="20" placeholder="Enter your Email" required /><br/>
+                
+                <label for="password"><b>Password</b><br/> </label>
+                <input type="text" name="password" size="20" placeholder="Enter your Password" required /><br/>
+
+                <input type="checkbox" checked="checked"> Remember me
+
+                <div class="clearfix">
+
+                <button type="submit" value="submitButton">Login</button>
+                <button type="button" value="cancelButton">Register</button>
+            </div>
+            </fieldset>
+    </body>
+</html>
