@@ -1,0 +1,82 @@
+
+.fa{
+    padding: 10px;
+    font-size: 20px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa-facebook{
+    background: #3B5998;
+    color: white;
+}
+
+.fa-instagram{
+    background: #125688;
+    color: white;
+}
+
+header{
+    display: block;
+    margin: 0 atuo;
+    width: 960px;
+    padding: 0;
+    font-size: 20px;
+    font-weight: normal;
+    color: gray;
+    font-style: normal;
+    line-height: normal;
+}
+
+footer{
+    padding: 10px;
+    text-align: right;
+    color: palevioletred;
+    font-size: 20px;
+    /*font-family: 'Stalemate', cursive;*/
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cancelButton {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+
+.cancelButton,.submitButton {
+    float: left;
+    width: 50%;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media screen and (max-width: 300px) {
+    .cancelButton, .submitButton {
+       width: 100%;
+    }
+}
+
