@@ -1,27 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <link type="text/css" rel="stylesheet" href="CPSC463/css/style.css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <meta charset="utf-8">
         <title>Online Food Ordering System</title>
     </head>
     <body>
-        <h1>Welcome to Online Food Ordering</h1>
-        <form action="CPSC463/scripts/getIndexInfo.php" method="POST">
+    	<header id="header" class="clear">
+    		<div id="hgroup">
+    			<div class="logo"><img src="images/logo.png" alt="my logo" align="left" align="top" style="width: 100px; height: 80px;"></div>
+     			<h1>Welcome to Online Food Ordering</h1>
+    		</div>
+  		</header>
+    <aside id="left_column">
+    <section class="login">
+      
+        <form action="scripts/signupForm.php" method="POST">
             <fieldset>
                 <h2>Login</h2>
-                <label for="email"><b>Email</b><br/> </label>
-                <input type="text" name="email" size="20" placeholder="Enter your Email" required /><br/>
-                
-                <label for="password"><b>Password</b><br/> </label>
-                <input type="text" name="password" size="20" placeholder="Enter your Password" required /><br/>
+               	<label for="email"><b>Email</b><br/> </label>
+               	<input type="text" name="email" size="20" placeholder="Enter your Email" required /><br/>
+               
+               	<label for="password"><b>Password</b><br/> </label>
+               	<input type="password" name="password" size="20" placeholder="Enter your Password" required /><br/>
 
-                <input type="checkbox" checked="checked"> Remember me
+               	<input type="checkbox" checked="checked"> Remember me
 
-                <div class="clearfix">
+               	<div class="clearfix">
 
-                <button type="submit" value="submitButton">Login</button>
-                <button type="button" value="cancelButton">Register</button>
-            </div>
+               	<button type="submit" class="submitButton">Login</button>
+               	<button type="button" class="cancelButton"><a href="cReg.html" style="background:none; color:white">Register</a></button>
+           		</div>
             </fieldset>
+        </form>
+    </section>
+	</aside>
+	<footer>
+            <p2>copyright &copy; 2019 by the Company<br/></p2>
+            <nav>
+                <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com" class="fa fa-instagram"></a>
+            </nav>
+        </footer>
     </body>
 </html>
