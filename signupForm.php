@@ -1,11 +1,22 @@
 <?php
 session_start();
-$_SESSION['message'] = '';
-$mysqli = 
+$db = mysqli_connect("localhost", "root", "", "accounts");
+if($_POST){
+	
+	$Username = $_POST['firstname'];
+	$Username2 = $_POST['lastname'];
+	$Email = $_POST['email'];
+	$Password = $_POST['pwd'];
 
-
+	$sql = "INSERT INTO users(username, usernameL, email, password) VALUES('$Username','$Username2','$Email','$Password')";
+	mysqli_query($db, $sql);
+	$_SESSION['message'] = "you are in";
+	$_SESSION['username'] = $firstname;
+	header("location: index.html");
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -24,9 +35,9 @@ $mysqli =
   		<section>
   			<fieldset>
   			<h2>Register Form</h2>
-  			<form action="scripts/signupForm.php" style="border: 0px solid #ccc">
+  			<form method="post" action="signupForm.php" style="border: 0px solid #ccc">
   				<label><b>First Name</b></label>
-  				<input type="text" placeholder="Enter your First Name" size="20" name="firstname" required />
+  				<input type="fname" placeholder="Enter your First Name" size="20" name="firstname" required />
 
   				<label><b>Last Name</b></label>
   				<input type="text" placeholder="Enter your Last Name" size="20" name="lastname" required />
@@ -36,7 +47,6 @@ $mysqli =
 
   				<label><b>Password</b></label>
   				<input type="password" placeholder="Enter your Password" size="20" name="pwd" required />
-  				<input type="password" placeholder="Confirm Password" size="20" name="pwd" required />
   				<input type="checkbox" checked="checked" /> Remember me
   				<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
