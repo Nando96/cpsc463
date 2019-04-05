@@ -57,17 +57,20 @@ button {
     width: 100%;
 }
 
-.cancelButton {
+.regButton {
     padding: 14px 20px;
     background-color: #f44336;
 }
 
 
-.cancelButton,.submitButton {
+.regButton,.submitButton {
     float: left;
     width: 50%;
 }
 
+.register {
+  display: inline;
+}
 .clearfix::after {
     content: "";
     clear: both;
@@ -75,8 +78,7 @@ button {
 }
 
 @media screen and (max-width: 300px) {
-    .cancelButton, .submitButton {
+    .regButton, .submitButton {
        width: 100%;
     }
 }
-
