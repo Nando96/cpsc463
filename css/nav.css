@@ -45,10 +45,29 @@ body {
   font-size: 50px;
 }
 
+
+.h1 {
+  background: #ebdad3;
+  margin-left: 160px; /* Same as the width of the sidenav */
+  margin-top: 40%;
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 20px 40%;
+  color: #4e4444 !important;
+}
+
+#form-content {
+  background: #ebdad3;
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 40px 40%;
+  color: #4e4444 !important;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
 
 
 

@@ -16,19 +16,25 @@ if(isset($_POST['']))
         <title>Login Form</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/nav.css" type="text/css">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="js/jquery-1.8.2.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
+		<style type="text/css">
+		a:link {color: #ffffff}
+		a:visited {color: #ffffff}
+		a:hover {color: #ffffff}
+		a:active {color: #ffffff}
+		</style>
     </head>
     <body>
 	<?php include("header.php"); ?>
 <?php
 	$error = '';
 	if(isset($_POST['is_login'])){
-		$sql = "SELECT * FROM ".$SETTINGS["USERS"]." WHERE 'email' = '".mysqli_real_escape_string($_POST['email'])."' AND 'password' = '".mysqli_real_escape_string($_POST['password'])."'";
+		$sql = "SELECT * FROM ".$SETTINGS["USERS"]." WHERE email = '".mysqli_real_escape_string($connection,$_POST['email'])."' AND password = '".mysqli_real_escape_string($connection,$_POST['password'])."'";
 		$sql_result = mysqli_query ($connection, $sql) or die ('request "Could not execute SQL query" '.$sql);
 		$user = mysqli_fetch_assoc($sql_result);
 		if(!empty($user)){
@@ -36,31 +42,27 @@ if(isset($_POST['']))
 		}
 		else{
 			$error = 'Wrong email or password.';
-			}
+		}
 	}
 	if(isset($_GET['ac']) && $_GET['ac'] == 'logout'){
 		$_SESSION['user_info'] = null;
 		unset($_SESSION['user_info']);
 	}
 ?>
-<?php 
-	if(isset($_SESSION['user_info']))	{
-		$_SESSION['userName'] = 'Root';
-		$_COOKIE['varname'] = 9;	
-?>
+<?php if(isset($_SESSION['user_info']))	{
+$_SESSION['userName'] = 'Root';		$_COOKIE['varname'] = 9;	?>
 	    <form id="login-form" class="login-form" name="form1" method="post" action="index.php">
 
 	        <div id="form-content">
 	            <div class="welcome">
-					Welcome, you are logged in. 
+					Welcome, you are logged in.
                     <br />
 					Thank you for choosing us.
 					<br />
 					<center><a href="order.php" style="color:#3ec038">Place an order</a></center>
 					<center><a href="changepw.php" style="color:#3ec038">Change password</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="deact.php" style="color:#3ec038">Deactivate your account</a></center><br /><br/>
 					<section align="right"><a href="login.php?ac=logout" style="color:#3ec038">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</section>
-				</div>	
+				</div>
 	        </div>
 	    </form>
 	<?php } else { ?>
@@ -88,7 +90,7 @@ if(isset($_POST['']))
 	        </div>
 	        <div id="form-loading" class="hide"><i class="fa fa-circle-o-notch fa-spin"></i></div>
 	    </form>
-	<?php } ?>  
-	<?php include("main.php"); ?> 
+	<?php } ?>
+	<?php include("main.php"); ?>
     </body>
 </html>

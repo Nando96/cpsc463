@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/nav.css" type="text/css"/>
+    <link rel="stylesheet" href="css/main.css" type="text/css"/>
     <title>Food Online Ordering System</title>
   </head>
   <body>
@@ -11,8 +11,8 @@
       <a href="main.php">Home</a>
       <a href="login.php">Login</a>
       <a href="signupForm.php">Register</a>
-      <a href="#menu">Menu</a>
-      <a href="#contact">Contact</a>
+      <a href="order.php">Menu</a>
+      <a href="about.php">Contact</a>
     </div>
 <!-- Page content -->
     <div class="main">

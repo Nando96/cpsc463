@@ -39,6 +39,7 @@ else
 <html>
 	<head>
 		<link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
 		<title>Register</title>
 		<script type="text/javascript">
 			function validate() {
