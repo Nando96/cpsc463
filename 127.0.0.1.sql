@@ -66,14 +66,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `addr` varchar(200) NOT NULL,
   `email` varchar(30) NOT NULL,
   `pw` varchar(30) NOT NULL,
-  `cpw` varchar(30) NOT NULL
+  `cpw` varchar(30) NOT NULL,
+  `user_activation_code` varchar(250) NOT NULL,
+  `user_email_status` enum('not verified','verified') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`fname`, `lname`, `location`, `mob`, `addr`, `email`, `pw`, `cpw`) VALUES
-('Sa', 'Nar', 'Orange', '9120852312', 'D/202, Thakur Village', 'sar@gmaill.com', 'sar', 'sar'),
-('Ar', 'Mas', 'Fullerton', '9012654732', 'C/308, Raheja Apartments', 'arc@gmail.com', 'ar', 'arr'),
-('Vt', 'Ne', 'Los Angeles', '9512456745', 'A/401, Rose Villa', 'vn9@gmail.com', 'vi', 'vin');
+INSERT INTO `user` (`fname`, `lname`, `location`, `mob`, `addr`, `email`, `pw`, `cpw`, `user_activation_code`, `user_email_status`) VALUES
+('Sa', 'Nar', 'Orange', '9120852312', 'D/202, Thakur Village', 'sar@gmaill.com', 'sar', 'sar', '15647d4s85a4d6sa4d64as5', 'verified'),
+('Ar', 'Mas', 'Fullerton', '9012654732', 'C/308, Raheja Apartments', 'arc@gmail.com', 'ar', 'arr', 'd6s4a65d145sa6d5sd', 'verified'),
+('Vt', 'Ne', 'Los Angeles', '9512456745', 'A/401, Rose Villa', 'vn9@gmail.com', 'vi', 'vin', 'd54sa654ds81dsa64f8sa', 'verified');

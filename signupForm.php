@@ -1,4 +1,8 @@
 <?php
+  require("PHPMailer/src/PHPMailer.php");
+  require("PHPMailer/src/SMTP.php");
+  require("PHPMailer/src/Exception.php");
+//require 'C:/xamp/phpMyAdmin/vendor/autoload.php';
 session_start();
 $conn = mysqli_connect("localhost","root","","food");
 if(!$conn){
@@ -6,6 +10,8 @@ if(!$conn){
 }
 if (isset($_POST['submit']))
 {
+
+
 $fname=$_POST['fname'];
 $lname=$_POST['lname'];
 $location=$_POST['location'];
@@ -14,17 +20,56 @@ $addr=$_POST['addr'];
 $email=$_POST['email'];
 $pw=$_POST['pw'];
 $cpw=$_POST['cpw'];
-$sql = "INSERT INTO user VALUES ('$fname', '$lname', '$location', '$mob', '$addr', '$email', '$pw', '$cpw');";
+$user_activation_code = md5(rand());
+
+
+
+
+if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'")) == false){
+echo("email not in db");
+
+
+$sql = "INSERT INTO user VALUES ('$fname', '$lname', '$location', '$mob', '$addr', '$email', '$pw', '$cpw','$user_activation_code','not verified');";
+
 	if(mysqli_query($conn, $sql))
 {
-	$message = "You have been successfully registered";
-}
-else
-{
-	$message = "Could not insert record";
-}
-	echo "<script type='text/javascript'>alert('$message');</script>";
-	$sql1 = "INSERT INTO php_users_login(`email`, `password`) VALUES ('$email', '$pw');";
+
+
+//sending message for verrification
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+$mail->isSMTP();
+
+$mail->SMTPOptions = array(
+    	'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    )
+);
+$base_url = "http://localhost/cpsc/";
+$mail_body = "<p>Hi ".$fname.",</p>
+			<p>Thanks for Registration. Your password is ".$pw.", This password will work only after your email verification.</p>
+			<p>Please Open this link to verified your email address - ".$base_url."email_verification.php?activation_code=".$user_activation_code;
+
+$mail->SMTPDebug = 0;
+$mail->Host = 'smtp.gmail.com';
+$mail->IsSMTP();
+$mail->Port = 587;
+$mail->SMTPSecure = 'tls';
+$mail->SMTPAuth = true;
+$mail->Username = "nandomendo96@gmail.com";
+$mail->Password = "Poopnose69!";
+$mail->setFrom('temp@example.com', 'Food ordering Team');
+$mail->addReplyTo('replyto@example.com', $fname);
+$mail->addAddress($email, $fname);
+$mail->Subject = 'Food Online Ordering System Account Verification';
+$mail->Body = $mail_body;
+$mail->AltBody = 'This is a plain-text message body';
+if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+
+		$sql1 = "INSERT INTO php_users_login (email, password) VALUES ('$email', '$pw');";
 	if(mysqli_query($conn, $sql1))
 	{
 		$message1 = "Added in login table";
@@ -33,7 +78,29 @@ else
 	{
 		$message1 = "Could not insert record";
 	}
-	echo "<script type='text/javascript'>alert('$message1');</script>";}
+	echo "<script type='text/javascript'>alert('$message1');</script>";
+}
+
+function save_mail($mail)
+{
+    $path = "{imap.gmail.com:993/imap/ssl}[Gmail]/Sent Mail";
+    $imapStream = imap_open($path, $mail->Username, $mail->Password);
+    $result = imap_append($imapStream, $path, $mail->getSentMIMEMessage());
+    imap_close($imapStream);
+    return $result;
+}
+
+			}
+			}
+			else{
+				echo("email in db");
+			}
+		}
+else
+{
+	$message = "Could not insert record";
+}
+
 ?>
 
 <html>

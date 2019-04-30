@@ -59,6 +59,19 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 20px;}
 }
+li {
+    list-style-type: none;
+    position: relative;    /* It is required for setting position to absolute in the next rule. */
+    margin: 25px;
+    font-size: 25px;
+}
+
+li::before {
+    content: '\2022';      /* Unicode for • character */
+    position: absolute;
+    left: -0.8em;          /* Adjust this value so that it appears where you want. */
+    font-size: 1.1em;      /* Adjust this value so that it appears what size you want. */
+}
 
 footer{
     padding: 10px;

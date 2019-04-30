@@ -59,8 +59,8 @@ $_SESSION['userName'] = 'Root';		$_COOKIE['varname'] = 9;	?>
                     <br />
 					Thank you for choosing us.
 					<br />
-					<center><a href="order.php" style="color:#3ec038">Place an order</a></center>
-					<center><a href="changepw.php" style="color:#3ec038">Change password</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="order.php" style="color:#3ec038">Place an order</a></center>
+					<a href="changepw.php" style="color:#3ec038">Change password</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<section align="right"><a href="login.php?ac=logout" style="color:#3ec038">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</section>
 				</div>
 	        </div>
